@@ -24,6 +24,10 @@ HF_MODELS = {
         repo_id='sberbank-ai/Real-ESRGAN',
         filename='RealESRGAN_x8.pth',
     ),
+    4a: dict(
+        repo_id='ximso/RealESRGAN_x4plus_anime_6B',
+        filename='RealESRGAN_x4plus_anime_6B.pth',
+    ),
 }
 
 
@@ -38,7 +42,7 @@ class RealESRGAN:
         
     def load_weights(self, model_path, download=True):
         if not os.path.exists(model_path) and download:
-            assert self.scale in [2,4,8], 'You can download models only with scales: 2, 4, 8'
+            assert self.scale in [2,4,8,4a], 'You can download models only with scales: 2, 4, 8, 4a'
             config = HF_MODELS[self.scale]
             cache_dir = os.path.dirname(model_path)
             local_filename = os.path.basename(model_path)
